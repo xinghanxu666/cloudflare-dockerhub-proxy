@@ -39,7 +39,7 @@ _✨ a simple hub.docker.com proxy on cloudflare worker ✨_
 
 4. Upon successful deployment, you'll receive a unique Worker URL, like `https://your-worker-name.workers.dev` , which can then be used to proxy Docker Hub.
 
-## 🔄 如何使用代理 / Feedback and Contributions
+## 🔄 如何使用代理 / How to Use the Proxy
 
 💡 要通过此代理访问或拉取Docker镜像，只需将原本的Docker Hub地址替换为你的Worker URL即可
 
