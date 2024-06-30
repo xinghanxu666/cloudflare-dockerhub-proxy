@@ -56,7 +56,7 @@ docker pull nginx:latest
 
 Should be changed to:
 ```bash
-docker pull your-worker-name.workers.dev/nginx:latest
+docker pull your-worker-name.workers.dev/amd64/nginx:latest
 ```
 
 ## 📖许可证 / License
