@@ -18,16 +18,21 @@ export default {
     url.hostname = 'registry-1.docker.io';
     const modifiedRequest = new Request(url.toString(), request);
 
-    let response = await fetch(modifiedRequest);
+    try {
+      let response = await fetch(modifiedRequest);
 
-    const authHeader = response.headers.get('Www-Authenticate');
-    if (authHeader) {
-      const requestUrl = new URL(request.url);
-      const newRealm = `https://${requestUrl.hostname}/token`;
-      const modifiedAuthHeader = authHeader.replace(/realm="https:\/\/[^"]+"/, `realm="${newRealm}"`);
-      response = new Response(response.body, response);
-      response.headers.set('Www-Authenticate', modifiedAuthHeader);
+      const authHeader = response.headers.get('Www-Authenticate');
+      if (authHeader) {
+        const requestUrl = new URL(request.url);
+        const newRealm = `https://${requestUrl.hostname}/token`;
+        const modifiedAuthHeader = authHeader.replace(/realm="https:\/\/[^"]+"/, `realm="${newRealm}"`);
+        response = new Response(response.body, response);
+        response.headers.set('Www-Authenticate', modifiedAuthHeader);
+      }
+      return response;
+    } catch (error) {
+      console.error('Fetch error:', error);
+      return new Response('Error fetching Docker Hub resource', { status: 500 });
     }
-    return response;
   }
 };
