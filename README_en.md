@@ -2,7 +2,7 @@
 
 _✨ a simple hub.docker.com proxy on cloudflare worker ✨_  
 
-[中文版README](README_zh.md)
+[中文版 README](README.md)
 
 ## 📦 Usage Instructions
 
