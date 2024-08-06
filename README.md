@@ -2,6 +2,8 @@
 
 _✨ 基于 Cloudflare Worker 的简单 hub.docker.com 代理服务 ✨_
 
+[English README](README_en.md)
+
 ## 📦 使用指南
 
 ### 1. 创建 Cloudflare Worker
