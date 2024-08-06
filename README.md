@@ -1,46 +1,42 @@
 # 🌩️ Cloudflare Docker Hub Proxy
 
-_✨ a simple hub.docker.com proxy on cloudflare worker ✨_  
+_✨ 基于 Cloudflare Worker 的简单 hub.docker.com 代理服务 ✨_
 
-[中文版README](README_zh.md)
+## 📦 使用指南
 
-## 📦 Usage Instructions
+### 1. 创建 Cloudflare Worker
 
-### 1. Create a Cloudflare Worker
+1. 登录 Cloudflare 账户后，访问 [Workers Dashboard](https://workers.cloudflare.com/)
+2. 点击“创建 Worker”按钮以启动新 Worker 的创建过程
 
-1. After logging into your Cloudflare account, navigate to the [Workers Dashboard](https://workers.cloudflare.com/).
+### 2. 粘贴脚本代码
 
+📝 在仓库中找到 `worker.js` 文件
 
-2. Click the "Create a Worker" button to start setting up a new Worker.
+3. 将 `worker.js` 文件中的所有代码粘贴至 Cloudflare Workers 的在线代码编辑器里
 
-### 2. Copy JavaScript
+### 3. 部署 Worker
 
-📝 Locate the `worker.js` file in this repository.
+🚀 确认编辑器中的代码无误后，点击“保存并部署”按钮执行保存与部署操作
 
-3. Paste all the code from `worker.js` into Cloudflare Workers' online editor.
+4. 部署成功后，你将获得一个专属于你的 Worker 地址，形式如 `https://your-worker-name.workers.dev`。通过这个 URL，你可以代理 Docker Hub
 
-### 3. Deploy the Worker
+## 🔄 代理使用方法
 
-🚀 Once you've confirmed the code is correct in the editor, hit the "Save & Deploy" button.
+💡 要通过此代理来访问或下载 Docker 镜像，只需将原 Docker Hub 地址替换为你的 Worker URL
 
-4. Upon successful deployment, you'll receive a unique Worker URL, like `https://your-worker-name.workers.dev` , which can then be used to proxy Docker Hub.
-
-## 🔄 How to Use the Proxy
-
-💡 To access or pull Docker images through this proxy, simply replace the Docker Hub address with your Worker URL.
-
-For instance, the typical Docker pull command:
+比如，原本的 Docker pull 命令为：
 
 ```bash
 docker pull nginx:latest
 ```
 
-Should be changed to:
+现在应更改为：
 
 ```bash
 docker pull your-worker-name.workers.dev/amd64/nginx:latest
 ```
 
-## 📖 License
+## 📖 许可证
 
-This project is open-sourced under the `Apache-2.0 license`.
+本项目遵循 `Apache-2.0 license` 开源协议
